@@ -35,7 +35,14 @@ cpmaddpackage(
     "gtest_force_shared_crt ON"
 )
 
-# enable_testing()
-# add_executable(sky_utils_tests ${sky_utils_TESTS})
+enable_testing()
+
+add_executable(sky_utils_tests ${sky_utils_TESTS})
+
+target_link_libraries(
+    sky_utils_tests
+    PRIVATE
+    GTest::gtest_main
+)
 
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/bin/)
