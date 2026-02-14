@@ -21,8 +21,3 @@ TEST(StringToInt64t, HandlesMaxValue) {
 TEST(StringToInt64t, HandlesMinValue) {
     EXPECT_EQ(sky_utils::to_int64("-9223372036854775808"), std::numeric_limits<int64_t>::min());
 }
-
-int main(int argc, char** argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}

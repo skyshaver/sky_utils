@@ -13,8 +13,8 @@ set(sky_utils_TESTS
     tests/sky_utils_test.cpp
 )
 
-# I like to download the dependencies to the same folder as the project.
-# If you want to install them system-wide, set CPM_SOURCE_CACHE with a path to the dependencies
+# Download the dependencies to the same folder as the project.
+# To install them system-wide, set CPM_SOURCE_CACHE with a path to the dependencies
 # either as an environment variable or pass it with -DCPM_SOURCE_CACHE=<path> when invoking cmake.
 set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libs)
 

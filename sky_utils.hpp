@@ -30,7 +30,7 @@ namespace sky_utils {
             return std::nullopt;
     }
 
-    auto split(const std::string& str, char delim = ' ') -> std::vector<std::string>
+    auto split_str_to_vector(const std::string& str, char delim = ' ') -> std::vector<std::string>
     {
         std::vector<std::string> result;
         size_t idx = str.find(delim);
