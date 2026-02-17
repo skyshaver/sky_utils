@@ -21,3 +21,10 @@ TEST(StringToInt64t, HandlesMaxValue) {
 TEST(StringToInt64t, HandlesMinValue) {
     EXPECT_EQ(sky_utils::to_int64("-9223372036854775808"), std::numeric_limits<int64_t>::min());
 }
+
+
+
+static std::vector<std::string> expected{ "1", "2", "3", "4", "5", "6", "7", "8" };
+TEST(SplitStringToVector, SplitsStringOnDefaultDelimiter) {
+    EXPECT_EQ(sky_utils::split_str_to_vector("1 2 3 4 5 6 7 8"), expected);
+}
