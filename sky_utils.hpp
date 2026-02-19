@@ -16,7 +16,7 @@
 namespace fs = std::filesystem;
 
 namespace sky_utils {
-    auto printStringVec(std::vector<std::string>& vec) -> void
+    auto print_vector_of_strings(std::vector<std::string>& vec) -> void
     {
         for (const auto& e : vec)
             std::cout << e << '\n';
@@ -67,23 +67,32 @@ namespace sky_utils {
         return lines;
     }
 
-    template<class T>
-    void fill_with_range(std::vector<T>& vin, const std::vector<T>& to_copy) {
+    auto file_to_string(fs::path path) -> std::string
+    {
+        std::string in;
 
-        auto start = std::begin(vin);
-        for (; start < std::end(vin); std::advance(start, to_copy.size())) {
-            if (std::distance(start, std::end(vin)) < to_copy.size()) {
+        return in;
+    }
+
+    template<class T, size_t N>
+    auto fill_array_with_sequence(std::array<T, N>& in, const std::array<T, N>& sequence) -> void
+    {
+
+        auto start = std::begin(in);
+        for (; start < std::end(in); std::advance(start, to_copy.size())) {
+            if (std::distance(start, std::end(in)) < to_copy.size()) {
                 break;
             }
             std::copy(std::begin(to_copy), std::end(to_copy), start);
         }
-        if (start < std::end(vin)) {
-            std::copy(std::begin(to_copy), std::begin(to_copy) + std::distance(start, std::end(vin)), start);
+        if (start < std::end(in)) {
+            std::copy(std::begin(to_copy), std::begin(to_copy) + std::distance(start, std::end(in)), start);
         }
     }
 
     template<class T>
-    auto create_vector_with_sequence(const std::vector<T>& sequence, size_t capacity) -> std::vector<T> {
+    auto create_vector_with_sequence(const std::vector<T>& sequence, size_t capacity) -> std::vector<T>
+    {
 
         std::vector<T> vin(capacity);
 

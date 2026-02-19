@@ -24,7 +24,15 @@ TEST(StringToInt64t, HandlesMinValue) {
 
 
 
-static std::vector<std::string> expected{ "1", "2", "3", "4", "5", "6", "7", "8" };
+static std::vector<std::string> expected_sstv{ "1", "2", "3", "4", "5", "6", "7", "8" };
 TEST(SplitStringToVector, SplitsStringOnDefaultDelimiter) {
-    EXPECT_EQ(sky_utils::split_str_to_vector("1 2 3 4 5 6 7 8"), expected);
+    EXPECT_EQ(sky_utils::split_str_to_vector("1 2 3 4 5 6 7 8"), expected_sstv);
+}
+
+TEST(SplitStringToVector, SplitsStringOnCommaDelimiter) {
+    EXPECT_EQ(sky_utils::split_str_to_vector("1,2,3,4,5,6,7,8", ','), expected_sstv);
+}
+
+TEST(SplitStringToVector, EmptyString) {
+    EXPECT_EQ(sky_utils::split_str_to_vector("", ','), std::vector<std::string>(1));
 }
