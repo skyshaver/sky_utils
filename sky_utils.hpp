@@ -56,7 +56,7 @@ namespace sky_utils {
         std::vector<std::string> lines;
         if (!fin.is_open())
         {
-            std::cout << "file failed to open\n";
+            std::println("file failed to open");
             return lines;
         }
 
@@ -70,6 +70,14 @@ namespace sky_utils {
     auto file_to_string(fs::path path) -> std::string
     {
         std::string in;
+        std::ifstream fin(path, std::ios::in);
+        if (!fin.is_open())
+        {
+            std::println("file failed to open");
+            return in;
+        }
+
+        in.assign((std::istreambuf_iterator<char>(fin)), (std::istreambuf_iterator<char>()));
 
         return in;
     }
@@ -79,14 +87,14 @@ namespace sky_utils {
     {
 
         auto start = std::begin(in);
-        for (; start < std::end(in); std::advance(start, to_copy.size())) {
-            if (std::distance(start, std::end(in)) < to_copy.size()) {
+        for (; start < std::end(in); std::advance(start, sequence.size())) {
+            if (std::distance(start, std::end(in)) < sequence.size()) {
                 break;
             }
-            std::copy(std::begin(to_copy), std::end(to_copy), start);
+            std::copy(std::begin(sequence), std::end(sequence), start);
         }
         if (start < std::end(in)) {
-            std::copy(std::begin(to_copy), std::begin(to_copy) + std::distance(start, std::end(in)), start);
+            std::copy(std::begin(sequence), std::begin(sequence) + std::distance(start, std::end(in)), start);
         }
     }
 

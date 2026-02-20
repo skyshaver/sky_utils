@@ -33,6 +33,15 @@ TEST(SplitStringToVector, SplitsStringOnCommaDelimiter) {
     EXPECT_EQ(sky_utils::split_str_to_vector("1,2,3,4,5,6,7,8", ','), expected_sstv);
 }
 
+// vally-of-ghosts.txt has 27 . so 28 lines
 TEST(SplitStringToVector, EmptyString) {
     EXPECT_EQ(sky_utils::split_str_to_vector("", ','), std::vector<std::string>(1));
 }
+
+TEST(SplitStringToVector, LongTextToLinesOnFullStop) {
+    auto test = sky_utils::file_to_string("./data/valley-of-ghosts.txt");
+    auto vec = sky_utils::split_str_to_vector(test, '.');
+    sky_utils::print_vector_of_strings(vec);
+    EXPECT_EQ(vec.size(), 28);
+}
+
