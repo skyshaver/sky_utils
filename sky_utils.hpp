@@ -118,4 +118,11 @@ namespace sky_utils {
         return vin;
     }
 
+    // https://stackoverflow.com/questions/69399457/how-to-set-masked-bits-to-a-specified-number
+    // can be used to arbitrarily replace bytes for argb etc.
+    uint32_t set_alpha(uint32_t argb_colour, uint32_t new_alpha) {
+        uint32_t mask = 0xFF000000;
+        return (argb_colour & ~mask) | (new_alpha * (mask & -mask));
+    }
+
 } // end namespace sky_utils
